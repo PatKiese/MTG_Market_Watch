@@ -111,16 +111,10 @@ if __name__ == '__main__':
         # Execute query and load result into Dataframe
         df = pd.read_sql(sql_query, con=engine)
         # Save Dataframe to csv file
-        tmp_file_name = str(datetime.today().strftime('%Y-%m-%d')+"_pricing_table.csv")
-        df.to_csv("./output/pricing_tables/{tmp_format}/{tmp_df_name}".format(tmp_format=tmp_format,
-                                                                              tmp_df_name=tmp_file_name))
         df.to_csv("./flask_dashboard/static/tables/{tmp_format}_pricing_table.csv".format(tmp_format=tmp_format))
         # Create Plots of item with the biggest price increase within the last week
         n_rows = df.shape[0]
         for i in range(n_rows):
-            tmp_file_name = str(datetime.today().strftime('%Y-%m-%d')+"_place_"+str(i)+".png")
-            draw_price_time_series(file_path="./output/pricing_tables_plots/{tmp_format}/{tmp_df_name}".format(
-                tmp_format=tmp_format, tmp_df_name=tmp_file_name), input_engine=engine, item_id=df.iloc[i]['id'])
             tmp_file_name = "place_"+str(i)+".png"
             draw_price_time_series(file_path="./flask_dashboard/static/media/{tmp_format}_{tmp_file_name}".format(
                 tmp_format=tmp_format, tmp_file_name=tmp_file_name), input_engine=engine, item_id=df.iloc[i]['id'])
