@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>MTG Market Watch</title>
+{% endblock %}
+
+{% block body %}
+<div class="mtgformats">
+    <h1 style="text-align: center">MTG Market Watch</h1>
+    <table style="text-align: center">
+        <tr>
+            <th>MTG Formats</th>
+        </tr>
+        {% for mtg_format in mtg_formats %}
+            <tr>
+                <td><a href="/pricings/{{mtg_format}}"> {{ mtg_format }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

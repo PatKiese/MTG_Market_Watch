@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>{{ format_name }} overview</title>
+{% endblock %}
+
+{% block body %}
+<div class="data_table">
+    <h1 style="text-align: center">{{ format_name }} prices overview</h1>
+    <table>
+        <tr>
+            {% for col in column_names %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in row_data %}
+        <tr>
+            {% for col, row_ in zip(column_names, row) %}
+                <td>{{row_}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    
+    </table>
+</div>
+<div class="plots">
+    {% for media in media_paths %}
+        <img src={{media}} alt="Elephant at sunset">
+    {% endfor %}
+</div>
+
+{% endblock %}
