@@ -1,7 +1,7 @@
 # MTG_Market_Watch
 
 ## Data pipeline for a pricing analysis on Magic the Gathering cards
-MTG_Market_Watch collects secondary market prices of Magic the Gathering cards from the [scrfall API](https://https://scryfall.com/docs/api) and analyses data to detect rapid 
+MTG_Market_Watch collects secondary market prices of Magic the Gathering cards from the [scryfall API](https://https://scryfall.com/docs/api) and analyses data to detect rapid 
 pricing increases ("spikes") within a give time (usualy twice a week).
 
 ## TODO's and known issues
