@@ -6,6 +6,14 @@ pricing increases ("spikes") within a give time (usualy twice a week).
 
 ![This is an image](/assets/Overview.png)
 
+## What it does
+### Data ingestion
+TBD
+### Data transformation
+TBD
+### Data presentation
+TBD
+
 ## TODO's and known issues
 - Adding more descriptions to the code and to this ReadMe :)
 - Prettify the tables in the flask app e.g. hoverable images of the cards and plots.
