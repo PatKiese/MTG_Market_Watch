@@ -1,4 +1,4 @@
-import util
+from util import ConfigManager, time_it
 import pandas as pd
 from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
@@ -6,13 +6,13 @@ import time
 from datetime import datetime
 
 
-@util.time_it
+@time_it
 def read_from_db(tmp_sql_query, tmp_engine):
     tmp_df = pd.read_sql(tmp_sql_query, con=tmp_engine)
     return tmp_df
 
 
-@util.time_it
+@time_it
 def get_latest_id(input_engine):
     """Get the latest run id."""
     tmp_query = """select distinct(run_id) as tmp_id, import_date from pricing_table order by import_date desc;"""
@@ -20,7 +20,7 @@ def get_latest_id(input_engine):
     return int(tmp_df.iloc[0]["tmp_id"])
 
 
-@util.time_it
+@time_it
 def get_last_week_id(input_engine):
     """Get the run id from last week."""
     tmp_query = """select distinct(run_id),import_date from pricing_table where import_date < NOW() - INTERVAL 1 WEEK 
@@ -29,7 +29,7 @@ def get_last_week_id(input_engine):
     return int(tmp_df.iloc[0]["run_id"])
 
 
-@util.time_it
+@time_it
 def fetch_table_from_id(input_engine, input_id):
     """Create a DataFrame from the corresponding item id."""
     tmp_query = '''select *  from pricing_table where id = '{input_id}' 
@@ -94,7 +94,8 @@ def create_sql_query_search_biggest_price_increase(currency="usd", mtg_format="c
 
 
 if __name__ == '__main__':
-    credentials = util.load_credentials("./input/credentials.json")
+    cfg_mgr = ConfigManager(credentials_file_path="./input/credentials.json" , run_id_file_path="./input/runID.json")
+    credentials = cfg_mgr.credentials
     # Create SQLAlchemy engine to connect to MySQL Database
     engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
                            .format(host=credentials['hostname'], db=credentials['dbname'], user=credentials['uname'],
