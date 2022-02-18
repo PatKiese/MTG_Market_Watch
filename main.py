@@ -2,8 +2,8 @@
 
 # Press Umschalt+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-from load_scryfall_to_sqldb import DbLoader
-from create_cleaned_pricing_table import DataTransformer
+from DbLoader import DbLoader
+from DataTransformer import DataTransformer
 from util import ConfigManager
 
 # Press the green button in the gutter to run the script.
