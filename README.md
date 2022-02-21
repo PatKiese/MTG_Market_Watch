@@ -29,3 +29,4 @@ TBD
 - Introducing OOP principles for better structure and encapsulation. Right now the code is more or less a collection of methods and scripts.
 - Slim down the css part. Currently using a template from [html5up.net](https://html5up.net)
 - Introduction of workflow orchestration (probably Airflow)
+- Introduction of small unit-tests
