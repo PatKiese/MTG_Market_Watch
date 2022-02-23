@@ -29,7 +29,7 @@ class DbLoader():
         df = pd.DataFrame.from_dict(data=r_dl.json(), orient='columns')
         return df
 
-    def fetch_table_from_db(self, run_id: int=None) -> pd.DataFrame():
+    def fetch_table_from_db(self, run_id: int=None, table_name: str='bulk_data') -> pd.DataFrame():
         credentials = self.credentials
         _run_id = self.run_id
         if run_id is not None:
@@ -39,8 +39,8 @@ class DbLoader():
                             .format(host=credentials['hostname'], db=credentials['dbname'], user=credentials['uname'],
                                     pw=credentials['pwd']))
         # Loading bulk data from sql database
-        print("..loading bulk data from sql database..")
-        df = pd.read_sql(f"select * from bulk_data where RUN_ID = {str(_run_id)};", con=engine)
+        print(f"..loading {table_name} from sql database..")
+        df = pd.read_sql(f"select * from {table_name} where RUN_ID = {str(_run_id)};", con=engine)
         print("..complete..")
         return df
 
