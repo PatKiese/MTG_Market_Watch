@@ -9,12 +9,17 @@
     <h1 style="text-align: center">{{ format_name }} prices overview</h1>
     <table>
         <tr>
+            <th>Price Overview</th>
             {% for col in column_names %}
             <th>{{col}}</th>
-            {% endfor %}
+            {% endfor %}  
         </tr>
-        {% for row in row_data %}
+        {% for row, media in zip(row_data, media_paths) %}
         <tr>
+            <td>
+                <span>Show price overview</span> 
+                <img src={{media}} alt="price overview">
+            </td>
             {% for col, row_ in zip(column_names, row) %}
                 <td>{{row_}}</td>
             {% endfor %}
@@ -22,11 +27,6 @@
         {% endfor %}
     
     </table>
-</div>
-<div class="plots">
-    {% for media in media_paths %}
-        <img src={{media}} alt="Elephant at sunset">
-    {% endfor %}
 </div>
 
 {% endblock %}

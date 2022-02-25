@@ -27,8 +27,6 @@ class PriceChecker():
         """Get the run id from last week."""
         query = """select distinct(run_id),import_date from pricing_table where import_date < NOW() - INTERVAL 1 WEEK 
             order by import_date desc;"""
-        query = """select distinct(run_id),import_date from pricing_table where import_date < NOW() - INTERVAL 6 DAY 
-            order by import_date desc;"""
         df = self.read_from_db(query, input_engine)
         return int(df.iloc[0]["run_id"])
 
