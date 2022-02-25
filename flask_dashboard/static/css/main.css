@@ -29,6 +29,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+img{
+	display: none
+	}
+	
+span:hover + img{
+	display: block;
+}
+
 body {
 	line-height: 1;
 }

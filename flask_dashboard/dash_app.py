@@ -32,7 +32,7 @@ def pricings(format_name):
     df = read_df(format_name)
     # TODO scryfall links as hyperlinks on names. Buttom with link/expandable to plots.
     # Data cleaning of decimal values
-    scryfall_urls = df['scryfall_uri']
+    scryfall_urls = df['scryfall_uri'].copy()
     df.drop(columns=['scryfall_uri'], inplace=True)
     media_paths = create_media_paths(format_name)
     column_names = ['Card Name', 'Set Name', 'Relative Difference (%)', 'Total Difference (USD)', 'New Price (USD)'
