@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Price History</title>
+{% endblock %}
+
+{% block body %}
+<div class="data_plot">
+    <h1 style="text-align: center">Price History</h1>
+    <table>
+        <tr>
+            <td style="text-align: center">
+                <img id="myMed" src="{{media}}" alt="price overview">
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
