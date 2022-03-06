@@ -30,3 +30,4 @@ TBD
 - Slim down the css part. Currently using a template from [html5up.net](https://html5up.net)
 - Introduction of workflow orchestration (probably Airflow)
 - ~~Introduction of small unit-tests~~
+- Adding an API to get results as a JSON file
