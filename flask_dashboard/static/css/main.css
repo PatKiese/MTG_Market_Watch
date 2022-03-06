@@ -29,6 +29,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+/*	
 img{
 	display: none
 	}
@@ -36,6 +37,7 @@ img{
 span:hover + img{
 	display: block;
 }
+*/
 
 body {
 	line-height: 1;
@@ -1028,7 +1030,7 @@ input, select, textarea {
 		display: inline-block;
 		font-size: 0.8rem;
 		font-weight: 300;
-		height: 2.75rem;
+		height: 2.2rem;
 		letter-spacing: 0.2rem;
 		line-height: 2.75rem;
 		outline: 0;

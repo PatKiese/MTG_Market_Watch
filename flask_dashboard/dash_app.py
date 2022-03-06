@@ -30,19 +30,28 @@ def pricings(format_name):
     if format_name not in mtg_formats:
         return redirect('/')
     df = read_df(format_name)
-    # TODO scryfall links as hyperlinks on names. Buttom with link/expandable to plots.
     # Data cleaning of decimal values
     scryfall_urls = df['scryfall_uri'].copy()
     df.drop(columns=['scryfall_uri'], inplace=True)
     media_paths = create_media_paths(format_name)
+    placings = range(1,len(media_paths)+1)
     column_names = ['Card Name', 'Set Name', 'Relative Difference (%)', 'Total Difference (USD)', 'New Price (USD)'
                     , 'Old Price (USD)', 'Date Checked-New', 'Date Checked-Old']
     # Data formatting
     df['rel_difference_usd'] = df['rel_difference_usd'].astype(float).round(2)
     df['difference_usd'] = df['difference_usd'].astype(float).round(2)
     return render_template('pricings.html', format_name=format_name, f_name_low=format_name.lower(),
-            column_names=column_names, row_data=list(df.values.tolist()), zip=zip,
-            media_paths=media_paths)
+            column_names=column_names, row_data=list(df.values.tolist()), zip=zip, placings=placings,
+            scryfall_urls=(scryfall_urls.to_list()))
+
+@app.route('/pricing_plot/<format_name>/<int:placing>')
+def show_image(format_name, placing):
+    if format_name not in mtg_formats:
+        return redirect('/')
+    media_paths = create_media_paths(format_name)
+    _media_path = media_paths[placing-1]
+    return render_template('pricing_plot.html', format_name=format_name, f_name_low=format_name.lower(),
+            media=_media_path)
 
 if __name__ == "__main__":
     app.run(debug=True)

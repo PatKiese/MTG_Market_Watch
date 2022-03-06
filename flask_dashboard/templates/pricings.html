@@ -9,19 +9,20 @@
     <h1 style="text-align: center">{{ format_name }} prices overview</h1>
     <table>
         <tr>
-            <th>Price Overview</th>
+            <th style="vertical-align:middle">Card Details</th>
             {% for col in column_names %}
-            <th>{{col}}</th>
+            <th style="vertical-align:middle">{{col}}</th>
             {% endfor %}  
         </tr>
-        {% for row, media in zip(row_data, media_paths) %}
+        {% for row, placing, scryfall_url in zip(row_data, placings, scryfall_urls) %}
         <tr>
             <td>
-                <span>Show price overview</span> 
-                <img src={{media}} alt="price overview">
+                <a href="/pricing_plot/{{format_name}}/{{placing}}"> Show Price History </a>
+                <br>
+                <a href="{{scryfall_url}}"> Show Card </a>
             </td>
             {% for col, row_ in zip(column_names, row) %}
-                <td>{{row_}}</td>
+                <td style="vertical-align:middle">{{row_}}</td>
             {% endfor %}
         </tr>
         {% endfor %}
