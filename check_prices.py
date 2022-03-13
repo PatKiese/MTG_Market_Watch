@@ -120,7 +120,7 @@ class PriceChecker():
 
 
 if __name__ == '__main__':
-    cfg_mgr = ConfigManager(credentials_file_path="./input/credentials.json" , run_id_file_path="./input/runID.json")
+    cfg_mgr = ConfigManager.from_files(credentials_file_path="./input/credentials.json" , run_id_file_path="./input/runID.json")
     credentials = cfg_mgr.credentials
     price_checker = PriceChecker(credentials=credentials)
     price_checker.run()
