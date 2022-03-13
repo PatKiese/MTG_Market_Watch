@@ -17,7 +17,10 @@ pricing increases ("spikes") within a give time (usualy twice a week).
 
 ## What it does
 ### Data ingestion
-TBD
+Scryfall provides a REST-like API for ingesting our card data programatically. The API exposes information available on the regular site in easy-to-consume formats (e.g. JSON).
+The site provides its entire database compressed for download in [bulk data](https://scryfall.com/docs/api/bulk-data) files, which will be updated every 24h.
+Our "DbLoader" class fetches this bulk data via the "fetch_data" method via a simple get-request and returns a pandas DataFrame. This DataFrame will then be loaded to our local 
+MySQL server with the "load_data_to_db" method. Credentials will be managed by the "ConfigManager" class. Credentials and run ids can be provided directly or with JSON files.
 ### Data transformation
 TBD
 ### Data presentation
