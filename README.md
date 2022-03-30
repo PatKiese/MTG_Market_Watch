@@ -31,7 +31,7 @@ The resulting data will be provided in a simple flask "dashboard". Starting from
 ![This is an image](/assets/Index.PNG)
 After selecting a format, on can see the results of the corresponding analysis presented on a table:
 ![This is an image](/assets/Commander.PNG)
-One can check the price history, by clicking on the "show price history" link or go directly to the corresponding scryfall page to check the card image:
+One can check the price history, by clicking on the "show price history" link or go directly to the corresponding scryfall page:
 ![This is an image](/assets/Pricing.PNG)
 
 ## TODO's and known issues
