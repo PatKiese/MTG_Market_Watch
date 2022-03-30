@@ -27,7 +27,7 @@ will create a more clearly arranged table ("create_pricing_table" method) and ap
 for our calculations. The calculations will be done in the PriceChecker class. It checks for each relevant MtG-format ("standard", "commander", "pioneer", "modern", "legacy") the top ten greatest increases in price which also have a minimum price increase of at least 1USD. The resulting DataFrame will then be saved as a csv-file.
 
 ### Data presentation
-TBD
+The resulting data will be provided in a simple flask "dashboard". Starting from the index, on can select the different MtG-formats.
 
 ## TODO's and known issues
 - Adding more descriptions to the code and to this ReadMe :)
