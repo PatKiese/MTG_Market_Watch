@@ -28,6 +28,7 @@ for our calculations. The calculations will be done in the PriceChecker class. I
 
 ### Data presentation
 The resulting data will be provided in a simple flask "dashboard". Starting from the index, on can select the different MtG-formats.
+![This is an image](/assets/Index.PNG)
 
 ## TODO's and known issues
 - Adding more descriptions to the code and to this ReadMe :)
