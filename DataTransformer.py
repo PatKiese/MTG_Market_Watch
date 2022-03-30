@@ -5,11 +5,19 @@ import util
 from datetime import date
 
 class DataTransformer():
+    """
+    This class handles the main data manipulations.
+    """
     def __init__(self, 
                 run_id: int ):
         self.run_id = run_id
 
     def prep_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Prepares the downloaded bulk data for future transformations. 
+        Adds a run_id and import_date.
+        :param df: DataFrame containing the daily bulk-data.
+        """
         timestamp = date.today()
         # add today's date as import date
         df["RUN_ID"] = self.run_id
@@ -25,6 +33,12 @@ class DataTransformer():
         return df
 
     def fetch_float_from_dict(self, x, key):
+        """
+        Fetches a float from a given 'dictionary' string.
+        :param x: 'dictionary' in form of a single string.
+        :param key: key of the dicitonary to search for.
+        :return: Value corresponding to key
+        """
         x.strip('{')
         x.strip('}')
         x_list = x.split(',')
@@ -40,6 +54,12 @@ class DataTransformer():
         return val
 
     def fetch_string_from_dict(self, x, key):
+        """
+        Fetches a string from a given 'dictionary' string.
+        :param x: 'dictionary' in form of a single string.
+        :param key: key of the dicitonary to search for.
+        :return: Value corresponding to key
+        """
         x.strip('{')
         x.strip('}')
         x_list = x.split(',')
@@ -52,6 +72,11 @@ class DataTransformer():
 
     @util.time_it
     def create_pricing_table(self, df: pd.DataFrame()) -> pd.DataFrame():
+        """
+        Creates a formatted pricing table from given bulk-data DataFrame.
+        :param df: Bulk-data DataFrame.
+        :return: Cleaned pricing table.
+        """
         print("..creating pricing data table..")
         df_prices = pd.DataFrame()
         df_prices[['run_id', 'import_date', 'id', 'name']] = df[['RUN_ID', 'IMPORT_DATE', 'id', 'name']]

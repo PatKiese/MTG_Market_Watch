@@ -11,7 +11,9 @@ def time_it(function):
     return timed
 
 class ConfigManager():
-
+    """
+    Class to handle the run configurations such as tracking the run_id and credentials.
+    """
     def __init__(self, uname: str, pwd:str, hostname: str="localhost", 
                  dbname: str="scryfall", run_id: int=0):
         self.credentials = {"hostname": hostname, "dbname": dbname, "uname": uname, "pwd": pwd}
