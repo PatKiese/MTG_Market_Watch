@@ -6,6 +6,9 @@ import time
 from datetime import datetime
 
 class PriceChecker():
+    """
+    Class to check the pricing tables for price spikes.
+    """
     def __init__(self, 
                 credentials: dict ):
         self.credentials = credentials

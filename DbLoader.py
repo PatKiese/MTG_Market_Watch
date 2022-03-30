@@ -9,6 +9,9 @@ import json
 import util
 
 class DbLoader():
+    """
+    Class to handle the data I/O from the scryfall and mySQL database.
+    """
     def __init__(self, 
                 credentials: dict, 
                 run_id: int ):
@@ -16,6 +19,10 @@ class DbLoader():
         self.credentials = credentials
 
     def fetch_data(self) -> pd.DataFrame:
+        """
+        Fetches the scryfall bulk-data from the API and returns the daily updated data as a pandas DataFrame.
+        :return: DataFrame with bulk-data
+        """
         api_path = "https://api.scryfall.com/bulk-data"
         # Get info for bulk data download
         print("Fetching data from scryfall: {api_path}".format(api_path=api_path))
@@ -30,6 +37,12 @@ class DbLoader():
         return df
 
     def fetch_table_from_db(self, run_id: int=None, table_name: str='bulk_data') -> pd.DataFrame():
+        """
+        Fetches a table corresponding to a run_id and table_name from the mySQL database and returns it as a pandas DataFrame.
+        :param run_id: run_id from the selected table.
+        :param table_name: Name of the table to be fetched from the database.
+        :return: DataFrame with bulk-data
+        """
         credentials = self.credentials
         _run_id = self.run_id
         if run_id is not None:
@@ -45,6 +58,12 @@ class DbLoader():
         return df
 
     def load_data_to_db(self, df: pd.DataFrame, replace_table: bool=False, table_name: str='bulk_data'):
+        """
+        Loads a table with table_name to the mySQL database.
+        :param df: Table to be loaded into database.
+        :paran replace_table: Signals if an existing table will be replaced.
+        :param table_name: Name of the table to be loaded to the database.
+        """
         # Credentials to database connection
         credentials = self.credentials
         # Create SQLAlchemy engine to connect to MySQL Database
