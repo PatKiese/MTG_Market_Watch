@@ -22,7 +22,10 @@ The site provides its entire database compressed for download in [bulk data](htt
 Our "DbLoader" class fetches this bulk data via the "fetch_data" method via a simple get-request and returns a pandas DataFrame. This DataFrame will then be loaded to our local 
 MySQL server with the "load_data_to_db" method. Credentials will be managed by the "ConfigManager" class. Credentials and run ids can be provided directly or with JSON files.
 ### Data transformation
-TBD
+Heart of the data analysis are the DataTransformer and PriceChecker classes. After the bulk data has been prepared, it can be provided to the DataTransformer wich 
+will create a more clearly arranged table ("create_pricing_table" method) and appends it into the "pricing_table" SQL table. This table will then act as a basis 
+for our calculations. The calculations will be done in the PriceChecker class. It checks for each relevant MtG-format ("standard", "commander", "pioneer", "modern", "legacy") the top ten greatest increases in price which also have a minimum price increase of at least 1USD. The resulting DataFrame will then be saved as a csv-file.
+
 ### Data presentation
 TBD
 
