@@ -34,6 +34,9 @@ After selecting a format, on can see the results of the corresponding analysis p
 One can check the price history, by clicking on the "show price history" link or go directly to the corresponding scryfall page:
 ![This is an image](/assets/Pricing.PNG)
 
+## How to use it
+TBD
+
 ## TODO's and known issues
 - Adding more descriptions to the code and to this ReadMe :)
 - ~~Prettify the tables in the flask app e.g. hoverable images of the cards and plots.~~
