@@ -53,5 +53,12 @@ def show_image(format_name, placing):
     return render_template('pricing_plot.html', format_name=format_name, f_name_low=format_name.lower(),
             media=_media_path)
 
+@app.route('/pricings_json/<format_name>')
+def pricings_json(format_name):
+    if format_name not in mtg_formats:
+        return redirect('/')
+    df = read_df(format_name)
+    return df.to_json()
+
 if __name__ == "__main__":
     app.run(debug=True)
