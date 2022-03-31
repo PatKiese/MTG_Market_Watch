@@ -35,7 +35,12 @@ One can check the price history, by clicking on the "show price history" link or
 ![This is an image](/assets/Pricing.PNG)
 
 ## How to use it
-TBD
+* Clone the project and cd into it
+* Setup a virtual environment and install the packages from the requirements.txt ("pip install -r requirements.txt")
+* Setup your SQL database (and the tables) and provide your credentials to the config manager
+* Run the main.py
+* Run the check_prices.py (keep in mind, that we're comparing differences in prices between two weeks) 
+* Run the flask application and check the browser
 
 ## TODO's and known issues
 - Adding more descriptions to the code and to this ReadMe :)
