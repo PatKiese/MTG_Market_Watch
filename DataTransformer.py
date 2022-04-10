@@ -32,7 +32,7 @@ class DataTransformer():
         df = df.applymap(str)
         return df
 
-    def fetch_float_from_dict(self, x, key):
+    def fetch_float_from_dict(self, x, key) -> float:
         """
         Fetches a float from a given 'dictionary' string.
         :param x: 'dictionary' in form of a single string.
@@ -53,7 +53,7 @@ class DataTransformer():
                 return val
         return val
 
-    def fetch_string_from_dict(self, x, key):
+    def fetch_string_from_dict(self, x, key) -> str:
         """
         Fetches a string from a given 'dictionary' string.
         :param x: 'dictionary' in form of a single string.

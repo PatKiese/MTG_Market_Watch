@@ -53,7 +53,7 @@ class PriceChecker():
 
 
     def create_sql_query_search_biggest_price_increase(self, currency="usd", mtg_format="commander", asc_desc="asc",
-                                                    reserved_list="False", start_id=0, end_id=1):
+                                                    reserved_list="False", start_id=0, end_id=1) -> str:
         """Create an SQL query to search for the biggest price increase within a given timeframe, represented by a start-
         and end-id. Usually one week or month."""
         if currency not in ["usd", "eur", "usd_foil", "eur_foil"]:
