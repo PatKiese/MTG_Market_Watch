@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 from datetime import datetime
+from typing import List
 import pandas as pd
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ def read_df(format_name : str) -> pd.DataFrame():
     df.drop(columns=df.columns[0], axis=1, inplace=True)
     return df
 
-def create_media_paths(format_name : str):
+def create_media_paths(format_name : str) -> List[str]:
     media_paths = []
     n_rows = len(read_df(format_name).index)
     for i in range(n_rows):

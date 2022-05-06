@@ -22,17 +22,21 @@ class DataTransformer():
         # add today's date as import date
         df["RUN_ID"] = self.run_id
         df["IMPORT_DATE"] = timestamp
+
         # rearrange columns so that date is in front
         cols = df.columns.tolist()
         cols = cols[-2:] + cols[:-2]
         df = df[cols]
+
         # Drop columns recently added
         df.drop(columns='security_stamp', inplace=True)
+
         # Data uniformity
         df = df.applymap(str)
+        
         return df
 
-    def fetch_float_from_dict(self, x, key):
+    def fetch_float_from_dict(self, x, key) -> float:
         """
         Fetches a float from a given 'dictionary' string.
         :param x: 'dictionary' in form of a single string.
@@ -53,7 +57,7 @@ class DataTransformer():
                 return val
         return val
 
-    def fetch_string_from_dict(self, x, key):
+    def fetch_string_from_dict(self, x, key) -> str:
         """
         Fetches a string from a given 'dictionary' string.
         :param x: 'dictionary' in form of a single string.
