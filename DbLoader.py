@@ -32,7 +32,9 @@ class DbLoader():
         dl_url = tmp_json['data'][0]['download_uri']
         print("Downloading bulk-data: ", dl_url)
         r_dl = requests.get(dl_url)
+        print("Complete! ")
         # load json file into pandas dataframe
+        print("Loading JSON file to pandas DataFrame")
         df = pd.DataFrame.from_dict(data=r_dl.json(), orient='columns')
         return df
 

@@ -101,6 +101,7 @@ class PriceChecker():
         engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
                             .format(host=credentials['hostname'], db=credentials['dbname'], user=credentials['uname'],
                                     pw=credentials['pwd']))
+
         # Loading bulk data from sql database
         mtg_formats = ["standard", "commander", "pioneer", "modern", "legacy"]
         latest_id = self.get_latest_id(engine)
@@ -110,10 +111,13 @@ class PriceChecker():
             sql_query = self.create_sql_query_search_biggest_price_increase(currency="usd", mtg_format=tmp_format,
                                                                     asc_desc="desc", reserved_list="False",
                                                                     start_id=last_week_id, end_id=latest_id)
+
             # Execute query and load result into Dataframe
             df = pd.read_sql(sql_query, con=engine)
+
             # Save Dataframe to csv file
             df.to_csv("./flask_dashboard/static/tables/{tmp_format}_pricing_table.csv".format(tmp_format=tmp_format))
+            
             # Create Plots of item with the biggest price increase within the last week
             n_rows = df.shape[0]
             for i in range(n_rows):
