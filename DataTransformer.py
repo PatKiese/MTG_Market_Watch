@@ -30,6 +30,7 @@ class DataTransformer():
 
         # Drop columns recently added
         df.drop(columns='security_stamp', inplace=True)
+        df.drop(columns='penny_rank', inplace=True)
 
         # Data uniformity
         df = df.applymap(str)
