@@ -19,23 +19,23 @@ class DataTransformer():
         :param df: DataFrame containing the daily bulk-data.
         """
         timestamp = date.today()
+        _df = df.copy()
         # add today's date as import date
-        df["RUN_ID"] = self.run_id
-        df["IMPORT_DATE"] = timestamp
+        _df["RUN_ID"] = self.run_id
+        _df["IMPORT_DATE"] = timestamp
 
         # rearrange columns so that date is in front
-        cols = df.columns.tolist()
+        cols = _df.columns.tolist()
         cols = cols[-2:] + cols[:-2]
-        df = df[cols]
+        _df = _df[cols]
 
         # Drop columns recently added
-        df.drop(columns='security_stamp', inplace=True)
-        df.drop(columns='penny_rank', inplace=True)
+        _df.drop(columns=['security_stamp', 'penny_rank'], inplace=True)
 
         # Data uniformity
-        df = df.applymap(str)
+        _df = _df.applymap(str)
         
-        return df
+        return _df
 
     def fetch_float_from_dict(self, x, key) -> float:
         """
